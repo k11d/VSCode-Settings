@@ -1,0 +1,45 @@
+{
+	"name": "gdscript-theme",
+	"displayName": "GDScript Theme",
+	"description": "Color theme that makes VSCode look like Godot's internal editor for GDScript",
+	"publisher": "JamesSauer",
+	"homepage": "https://gitlab.com/JamesSauer/GDScript-Theme-for-VSCode",
+	"repository": {
+		"type": "git",
+		"url": "https://gitlab.com/JamesSauer/GDScript-Theme-for-VSCode.git"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"bugs": {
+		"url": "https://gitlab.com/JamesSauer/GDScript-Theme-for-VSCode/issues"
+	},
+	"version": "1.0.0",
+	"icon": "icon.png",
+	"galleryBanner": {
+		"color": "#262C3B",
+		"theme": "dark"
+	},
+	"keywords": [
+		"Godot",
+		"GDScript"
+	],
+	"engines": {
+		"vscode": "^1.12.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "GDScript",
+				"uiTheme": "vs-dark",
+				"path": "./themes/GDScript-color-theme.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "2eb87768-5e01-4102-8354-3181a663adf5",
+		"publisherId": "1cbd6a9e-0832-4254-b127-304b26f0ac29",
+		"publisherDisplayName": "James Sauer"
+	}
+}

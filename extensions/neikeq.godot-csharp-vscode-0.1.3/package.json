@@ -1,0 +1,169 @@
+{
+	"name": "godot-csharp-vscode",
+	"displayName": "C# Tools for Godot",
+	"description": "Debugger and utilities for working with Godot C# projects",
+	"icon": "icon.png",
+	"version": "0.1.3",
+	"publisher": "neikeq",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/godotengine/godot-csharp-vscode"
+	},
+	"engines": {
+		"vscode": "^1.28.0"
+	},
+	"categories": [
+		"Debuggers",
+		"Other"
+	],
+	"activationEvents": [
+		"workspaceContains:project.godot",
+		"onDebugResolve:godot"
+	],
+	"main": "./dist/extension.bundled.js",
+	"scripts": {
+		"vscode:prepublish": "make build",
+		"compile": "make build",
+		"compile-tsc": "make tsc",
+		"compile-tsc-debug": "make tsc-debug",
+		"watch": "tsc -watch -p ./",
+		"webpack": "webpack --mode production",
+		"webpack-debug": "webpack --mode development",
+		"webpack-watch": "webpack --mode development --watch"
+	},
+	"dependencies": {
+		"chokidar": "^3.4.0",
+		"promise-socket": "^6.0.3",
+		"vscode-debugprotocol": "^1.40.0"
+	},
+	"extensionDependencies": [
+		"ms-dotnettools.csharp",
+		"ms-vscode.mono-debug"
+	],
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.28.0",
+		"glob": "^7.1.4",
+		"make": "^0.8.1",
+		"mocha": "^6.1.4",
+		"ts-loader": "^7.0.5",
+		"tslint": "^5.12.1",
+		"typescript": "^3.3.1",
+		"vsce": "^1.20.0",
+		"webpack": "^4.43.0",
+		"webpack-cli": "^3.3.11"
+	},
+	"breakpoints": [
+		{
+			"language": "csharp"
+		},
+		{
+			"language": "fsharp"
+		}
+	],
+	"contributes": {
+		"debuggers": [
+			{
+				"type": "godot-mono",
+				"label": "C# Godot",
+				"enableBreakpointsFor": {
+					"languageIds": [
+						"csharp",
+						"fsharp"
+					]
+				},
+				"program": "./dist/GodotDebugSession/GodotDebugSession.exe",
+				"osx": {
+					"runtime": "mono"
+				},
+				"linux": {
+					"runtime": "mono"
+				},
+				"initialConfigurations": [
+					{
+						"name": "Play in Editor",
+						"type": "godot-mono",
+						"mode": "playInEditor",
+						"request": "launch"
+					},
+					{
+						"name": "Launch",
+						"type": "godot-mono",
+						"request": "launch",
+						"mode": "executable",
+						"executable": "${workspaceRoot}/Godot.exe",
+						"executableArguments": [
+							"--path",
+							"${workspaceRoot}"
+						]
+					},
+					{
+						"name": "Attach",
+						"type": "godot-mono",
+						"request": "attach",
+						"address": "localhost",
+						"port": 23685
+					}
+				],
+				"configurationAttributes": {
+					"playInEditor": {},
+					"launch": {
+						"properties": {
+							"executable": {
+								"type": "string",
+								"description": "Path to the Godot executable"
+							},
+							"mode": {
+								"type": "string",
+								"enum": [
+									"playInEditor",
+									"executable"
+								],
+								"enumDescriptions": [
+									"Launches the project in the Godot editor for debugging",
+									"Launches the project with the specified executable for debugging"
+								],
+								"description": "Launch mode"
+							},
+							"executableArguments": {
+								"type": "array",
+								"description": "Arguments to append after the executable"
+							},
+							"env": {
+								"type": "object",
+								"description": "Environment variables",
+								"default": null
+							}
+						}
+					},
+					"attach": {
+						"required": [
+							"address",
+							"port"
+						],
+						"properties": {
+							"address": {
+								"type": "string",
+								"description": "Debugger address to attach to.",
+								"default": "localhost"
+							},
+							"port": {
+								"type": "number",
+								"description": "Debugger port to attach to.",
+								"default": 23685
+							}
+						}
+					}
+				}
+			}
+		]
+	},
+	"__metadata": {
+		"id": "c72f4c51-2c77-4592-ba2d-365e9c474014",
+		"publisherId": "b893b1f0-5bd4-4077-9fdc-b76239654786",
+		"publisherDisplayName": "Ignacio Roldán Etcheverry"
+	}
+}

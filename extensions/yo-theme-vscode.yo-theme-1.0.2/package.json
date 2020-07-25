@@ -1,0 +1,29 @@
+{
+	"name": "yo-theme",
+	"displayName": "Yo Theme",
+	"description": "Theme merged to - Shades Of Blue",
+	"version": "1.0.2",
+	"publisher": "yo-theme-vscode",
+	"icon": "icon.png",
+	"repository": "https://github.com/varunalex/yo-theme-for-vscode",
+	"engines": {
+		"vscode": "^1.27.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"contributes": {
+		"themes": [
+			{
+				"label": "Yo theme",
+				"uiTheme": "vs-dark",
+				"path": "./themes/Yo theme-color-theme.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "cfe5d38e-ed6d-4aa3-b9cd-8237d17f61db",
+		"publisherId": "0b6f13d5-238f-4999-9695-2466874ac990",
+		"publisherDisplayName": "YO Theme VSCode"
+	}
+}
